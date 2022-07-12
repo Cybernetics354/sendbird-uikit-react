@@ -138,7 +138,7 @@ const MembersAccordion = ({
             />
           )
         }
-        <Button
+        {/* <Button
           className="sendbird-members-accordion__footer__invite-users"
           type={ButtonTypes.SECONDARY}
           size={ButtonSizes.SMALL}
@@ -149,7 +149,7 @@ const MembersAccordion = ({
           }}
         >
           {stringSet.CHANNEL_SETTING__MEMBERS__INVITE_MEMBER}
-        </Button>
+        </Button> */}
         {
           showAddUserModal && (
             <InviteMembers

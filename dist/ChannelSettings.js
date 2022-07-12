@@ -1,15 +1,15 @@
 import React__default, { useRef, useState, useContext, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { b as LocalizationContext, c as __spreadArray, _ as __assign, w as withSendbirdContext, u as uuidv4 } from './LocalizationContext-aba63676.js';
-import { M as Modal, T as Type, a as TextButton, C as ContextMenu, I as IconButton, b as MenuItems, c as MenuItem, B as Button, d as ButtonTypes, e as ButtonSizes, U as UserProfileContext, f as ConnectedUserProfile, g as getSdk, h as UserProfileProvider } from './index-0d29f4f6.js';
-import { I as InviteMembers$1, B as Badge, c as createDefaultUserListQuery, L as LeaveChannel } from './LeaveChannel-43b6e8f0.js';
-import { A as Avatar, L as Label, a as LabelTypography, b as LabelColors, I as Icon, c as IconTypes, d as IconColors, P as PlaceHolder, f as PlaceHolderTypes } from './index-c7dcaeef.js';
-import { I as InputLabel, a as Input, n as noop, U as UserListItem$2, M as MutedAvatarOverlay } from './index-2bfec6a5.js';
-import { C as ChannelAvatar } from './index-eb37ea5b.js';
-import { A as AccordionGroup, a as Accordion } from './index-318691e3.js';
+import { b as LocalizationContext, c as __spreadArray, _ as __assign, w as withSendbirdContext, u as uuidv4 } from './LocalizationContext-84f2379a.js';
+import { M as Modal, T as Type, a as TextButton, C as ContextMenu, I as IconButton, b as MenuItems, c as MenuItem, B as Button, d as ButtonTypes, e as ButtonSizes, U as UserProfileContext, f as ConnectedUserProfile, g as getSdk, h as UserProfileProvider } from './index-54d7aad7.js';
+import { I as InviteMembers$1, B as Badge, c as createDefaultUserListQuery, L as LeaveChannel } from './LeaveChannel-08e3c119.js';
+import { A as Avatar, L as Label, a as LabelTypography, b as LabelColors, I as Icon, c as IconTypes, d as IconColors, P as PlaceHolder, f as PlaceHolderTypes } from './index-d7f49a62.js';
+import { I as InputLabel, a as Input, n as noop, U as UserListItem$2, M as MutedAvatarOverlay } from './index-9a85350e.js';
+import { C as ChannelAvatar } from './index-788bacf3.js';
+import { A as AccordionGroup, a as Accordion } from './index-f004d337.js';
 import 'react-dom';
-import './index-12a04c2d.js';
-import './utils-3f292c5c.js';
+import './index-8a12b66b.js';
+import './utils-da4b45ca.js';
 
 const EditDetails = props => {
   const {

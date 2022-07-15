@@ -25,3 +25,5 @@ export MessageSearchPannel from './smart-components/MessageSearch/messageSearchP
 export withSendBird from './lib/SendbirdSdkContext';
 export sendBirdSelectors from './lib/selectors';
 export useSendbirdStateContext from './hooks/useSendbirdStateContext';
+
+export SendbirdReducer from './smart-components/Conversation/dux/reducers.js';

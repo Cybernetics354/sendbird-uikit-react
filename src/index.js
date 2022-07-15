@@ -1,3 +1,5 @@
+export MessageHoc from "./smart-components/Conversation/components/MessageHOC";
+
 // sendbird provider component to handle sdk connection and data
 export SendBirdProvider from './lib/Sendbird';
 

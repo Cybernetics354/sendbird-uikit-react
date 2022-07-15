@@ -2,16 +2,16 @@
 
 var React = require('react');
 var PropTypes = require('prop-types');
-var LocalizationContext = require('./LocalizationContext-20ab283e.js');
-var index = require('./index-59fdb6c9.js');
-var LeaveChannel = require('./LeaveChannel-45df2be6.js');
-var index$2 = require('./index-1e853591.js');
-var index$1 = require('./index-9388b083.js');
-var index$3 = require('./index-41d3eace.js');
-var index$4 = require('./index-0d39ad76.js');
+var SendbirdSdkContext = require('./SendbirdSdkContext-89d804b3.js');
+var index = require('./index-54590273.js');
+var LeaveChannel = require('./LeaveChannel-b7e05b82.js');
+var index$2 = require('./index-de107146.js');
+var index$1 = require('./index-3fd14343.js');
+var index$3 = require('./index-711fa7d0.js');
+var index$4 = require('./index-8cfeb0c0.js');
+require('./index-9855395f.js');
 require('react-dom');
-require('./index-baa7cbb7.js');
-require('./utils-14e004c6.js');
+require('./utils-ed11a663.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -33,7 +33,7 @@ const EditDetails = props => {
   const [newFile, setNewFile] = React.useState(null);
   const {
     stringSet
-  } = React.useContext(LocalizationContext.LocalizationContext);
+  } = React.useContext(SendbirdSdkContext.LocalizationContext);
   const title = channel.name;
   return /*#__PURE__*/React__default["default"].createElement(index.Modal, {
     titleText: stringSet.MODAL__CHANNEL_INFORMATION__TITLE,
@@ -124,7 +124,7 @@ const ChannelProfile = props => {
   const [showModal, setShowModal] = React.useState(false);
   const {
     stringSet
-  } = React.useContext(LocalizationContext.LocalizationContext);
+  } = React.useContext(SendbirdSdkContext.LocalizationContext);
 
   const getChannelName = () => {
     if (channel && channel.name && channel.name !== 'Group Channel') {
@@ -240,7 +240,7 @@ function MembersModal(_a) {
             return;
           }
 
-          setMembers(LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], members, true), o, true));
+          setMembers(SendbirdSdkContext.__spreadArray(SendbirdSdkContext.__spreadArray([], members, true), o, true));
         });
       }
     }
@@ -279,7 +279,7 @@ function MembersModal(_a) {
                   channel.addOperators([member.userId], function () {
                     setMembers(members.map(function (m) {
                       if (m.userId === member.userId) {
-                        return LocalizationContext.__assign(LocalizationContext.__assign({}, member), {
+                        return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, member), {
                           role: 'operator'
                         });
                       }
@@ -292,7 +292,7 @@ function MembersModal(_a) {
                   channel.removeOperators([member.userId], function () {
                     setMembers(members.map(function (m) {
                       if (m.userId === member.userId) {
-                        return LocalizationContext.__assign(LocalizationContext.__assign({}, member), {
+                        return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, member), {
                           role: ''
                         });
                       }
@@ -310,7 +310,7 @@ function MembersModal(_a) {
                   channel.unmuteUser(member, function () {
                     setMembers(members.map(function (m) {
                       if (m.userId === member.userId) {
-                        return LocalizationContext.__assign(LocalizationContext.__assign({}, member), {
+                        return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, member), {
                           isMuted: false
                         });
                       }
@@ -323,7 +323,7 @@ function MembersModal(_a) {
                   channel.muteUser(member, function () {
                     setMembers(members.map(function (m) {
                       if (m.userId === member.userId) {
-                        return LocalizationContext.__assign(LocalizationContext.__assign({}, member), {
+                        return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, member), {
                           isMuted: true
                         });
                       }
@@ -365,7 +365,7 @@ const UserListItem$1 = _ref => {
   } = React.useContext(index.UserProfileContext);
   const {
     stringSet
-  } = React.useContext(LocalizationContext.LocalizationContext);
+  } = React.useContext(SendbirdSdkContext.LocalizationContext);
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: "sendbird-members-accordion__member"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
@@ -431,7 +431,7 @@ const MembersAccordion = _ref2 => {
   const [showAddUserModal, setShowAddUserModal] = React.useState(false);
   const {
     stringSet
-  } = React.useContext(LocalizationContext.LocalizationContext);
+  } = React.useContext(SendbirdSdkContext.LocalizationContext);
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: "sendbird-members-accordion"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
@@ -492,7 +492,7 @@ var UserListItem = function (_a) {
   var actionRef = React.useRef(null);
   var parentRef = React.useRef(null);
   var avatarRef = React.useRef(null);
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
 
   var _b = React.useContext(index.UserProfileContext),
       disableUserProfile = _b.disableUserProfile,
@@ -501,7 +501,7 @@ var UserListItem = function (_a) {
   var injectingClassNames = Array.isArray(className) ? className : [className];
   return /*#__PURE__*/React__default["default"].createElement("div", {
     ref: parentRef,
-    className: LocalizationContext.__spreadArray([COMPONENT_NAME], injectingClassNames, true).join(' ')
+    className: SendbirdSdkContext.__spreadArray([COMPONENT_NAME], injectingClassNames, true).join(' ')
   }, user.isMuted && /*#__PURE__*/React__default["default"].createElement(index$1.MutedAvatarOverlay, null), /*#__PURE__*/React__default["default"].createElement(index.ContextMenu, {
     menuTrigger: function (toggleDropdown) {
       return /*#__PURE__*/React__default["default"].createElement(index$2.Avatar, {
@@ -606,7 +606,7 @@ function OperatorsModal(_a) {
             return;
           }
 
-          setOperators(LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], operators, true), o, true));
+          setOperators(SendbirdSdkContext.__spreadArray(SendbirdSdkContext.__spreadArray([], operators, true), o, true));
         });
       }
     }
@@ -678,7 +678,7 @@ function AddOperatorsModal(_a) {
       memberQuery = _d[0],
       setMemberQuery = _d[1];
 
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
   React.useEffect(function () {
     var memberListQuery = channel.createMemberListQuery();
     memberListQuery.limit = 20;
@@ -723,7 +723,7 @@ function AddOperatorsModal(_a) {
             return;
           }
 
-          setMembers(LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], members, true), o, true));
+          setMembers(SendbirdSdkContext.__spreadArray(SendbirdSdkContext.__spreadArray([], members, true), o, true));
         });
       }
     }
@@ -734,7 +734,7 @@ function AddOperatorsModal(_a) {
       onChange: function (event) {
         var _a;
 
-        var modifiedSelectedMembers = LocalizationContext.__assign(LocalizationContext.__assign({}, selectedMembers), (_a = {}, _a[event.target.id] = event.target.checked, _a));
+        var modifiedSelectedMembers = SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, selectedMembers), (_a = {}, _a[event.target.id] = event.target.checked, _a));
 
         if (!event.target.checked) {
           delete modifiedSelectedMembers[event.target.id];
@@ -768,7 +768,7 @@ var OperatorList = function (_a) {
       hasNext = _e[0],
       setHasNext = _e[1];
 
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
   React.useEffect(function () {
     if (!channel) {
       setOperators([]);
@@ -892,7 +892,7 @@ var mapStoreToProps$3 = function (store) {
   };
 };
 
-var OperatorList$1 = LocalizationContext.withSendbirdContext(OperatorList, mapStoreToProps$3);
+var OperatorList$1 = SendbirdSdkContext.withSendbirdContext(OperatorList, mapStoreToProps$3);
 
 function InviteMembers(_a) {
   var hideModal = _a.hideModal,
@@ -950,7 +950,7 @@ function InviteMembers(_a) {
             return;
           }
 
-          setMembers(LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], members, true), o, true));
+          setMembers(SendbirdSdkContext.__spreadArray(SendbirdSdkContext.__spreadArray([], members, true), o, true));
         });
       }
     }
@@ -961,7 +961,7 @@ function InviteMembers(_a) {
       onChange: function (event) {
         var _a;
 
-        var modifiedSelectedMembers = LocalizationContext.__assign(LocalizationContext.__assign({}, selectedMembers), (_a = {}, _a[event.target.id] = event.target.checked, _a));
+        var modifiedSelectedMembers = SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, selectedMembers), (_a = {}, _a[event.target.id] = event.target.checked, _a));
 
         if (!event.target.checked) {
           delete modifiedSelectedMembers[event.target.id];
@@ -1143,7 +1143,7 @@ var mapStoreToProps$2 = function (store) {
   };
 };
 
-var MemberList$1 = LocalizationContext.withSendbirdContext(MemberList, mapStoreToProps$2);
+var MemberList$1 = SendbirdSdkContext.withSendbirdContext(MemberList, mapStoreToProps$2);
 
 function BannedMembersModal(_a) {
   var hideModal = _a.hideModal,
@@ -1188,7 +1188,7 @@ function BannedMembersModal(_a) {
             return;
           }
 
-          setMembers(LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], members, true), o, true));
+          setMembers(SendbirdSdkContext.__spreadArray(SendbirdSdkContext.__spreadArray([], members, true), o, true));
         });
       }
     }
@@ -1351,7 +1351,7 @@ var mapStoreToProps$1 = function (store) {
   };
 };
 
-var BannedMemberList$1 = LocalizationContext.withSendbirdContext(BannedMemberList, mapStoreToProps$1);
+var BannedMemberList$1 = SendbirdSdkContext.withSendbirdContext(BannedMemberList, mapStoreToProps$1);
 
 function MutedMembersModal(_a) {
   var hideModal = _a.hideModal,
@@ -1399,7 +1399,7 @@ function MutedMembersModal(_a) {
             return;
           }
 
-          setMembers(LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], members, true), o, true));
+          setMembers(SendbirdSdkContext.__spreadArray(SendbirdSdkContext.__spreadArray([], members, true), o, true));
         });
       }
     }
@@ -1570,7 +1570,7 @@ var mapStoreToProps = function (store) {
   };
 };
 
-var MutedMemberList$1 = LocalizationContext.withSendbirdContext(MutedMemberList, mapStoreToProps);
+var MutedMemberList$1 = SendbirdSdkContext.withSendbirdContext(MutedMemberList, mapStoreToProps);
 
 var kFormatter$1 = function (num) {
   return Math.abs(num) > 999 ? "".concat((Math.abs(num) / 1000).toFixed(1), "K") : num;
@@ -1591,7 +1591,7 @@ function AdminPannel(_a) {
   React.useEffect(function () {
     setFrozen(channel.isFrozen);
   }, [channel]);
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
   return /*#__PURE__*/React__default["default"].createElement(index$4.AccordionGroup, {
     className: "sendbird-channel-settings__operator"
   }, /*#__PURE__*/React__default["default"].createElement(index$4.Accordion, {
@@ -1752,13 +1752,13 @@ function ChannelSettings(props) {
   const userFilledApplicationUserListQuery = queries.applicationUserListQuery;
   const {
     stringSet
-  } = React.useContext(LocalizationContext.LocalizationContext);
+  } = React.useContext(SendbirdSdkContext.LocalizationContext);
   const {
     sdk,
     initialized
   } = sdkStore; // hack to kepp track of channel updates by triggering useEffect
 
-  const [channelUpdateId, setChannelUpdateId] = React.useState(LocalizationContext.uuidv4());
+  const [channelUpdateId, setChannelUpdateId] = React.useState(SendbirdSdkContext.uuidv4());
   const [channel, setChannel] = React.useState(null);
   const [invalidChannel, setInvalidChannel] = React.useState(false);
   const [showAccordion, setShowAccordion] = React.useState(false);
@@ -1807,7 +1807,7 @@ function ChannelSettings(props) {
         onCloseClick();
       }
     })), /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
-      type: index$2.PlaceHolderTypes.WRONG
+      type: index$2.PlaceHolderTypes$1.WRONG
     })));
   }
 
@@ -1858,7 +1858,7 @@ function ChannelSettings(props) {
           }
 
           onChannelModified(groupChannel);
-          setChannelUpdateId(LocalizationContext.uuidv4());
+          setChannelUpdateId(SendbirdSdkContext.uuidv4());
         });
         return;
       }
@@ -1872,7 +1872,7 @@ function ChannelSettings(props) {
 
         logger.info('ChannelSettings: Channel information updated', groupChannel);
         onChannelModified(groupChannel);
-        setChannelUpdateId(LocalizationContext.uuidv4());
+        setChannelUpdateId(SendbirdSdkContext.uuidv4());
       });
     }
   }), channel.myRole === 'operator' ? /*#__PURE__*/React__default["default"].createElement(AdminPannel, {
@@ -1924,7 +1924,7 @@ function ChannelSettings(props) {
       logger.info('ChannelSettings: Inviting new users');
       channel.inviteWithUserIds(selectedMembers).then(res => {
         onChannelModified(res);
-        setChannelUpdateId(LocalizationContext.uuidv4());
+        setChannelUpdateId(SendbirdSdkContext.uuidv4());
         logger.info('ChannelSettings: Inviting new users success!', res);
       });
     }
@@ -2020,7 +2020,7 @@ ChannelSettings.defaultProps = {
   onCloseClick: () => {},
   onChannelModified: () => {}
 };
-var ChannelSettings$1 = LocalizationContext.withSendbirdContext(ChannelSettings);
+var ChannelSettings$1 = SendbirdSdkContext.withSendbirdContext(ChannelSettings);
 
 module.exports = ChannelSettings$1;
 //# sourceMappingURL=ChannelSettings.js.map

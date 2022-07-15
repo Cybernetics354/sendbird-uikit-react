@@ -1,10 +1,10 @@
 'use strict';
 
 var React = require('react');
-var LocalizationContext = require('./LocalizationContext-20ab283e.js');
-var index$1 = require('./index-2e80bec5.js');
-var index = require('./index-baa068bd.js');
-var index$2 = require('./index-1e853591.js');
+var SendbirdSdkContext = require('./SendbirdSdkContext-89d804b3.js');
+var index$1 = require('./index-57f8fd3e.js');
+var index = require('./index-35e33281.js');
+var index$2 = require('./index-de107146.js');
 require('prop-types');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -25,7 +25,7 @@ function reducer(state, action) {
     case SET_CURRENT_CHANNEL:
       {
         var currentChannel = action.payload;
-        return LocalizationContext.__assign(LocalizationContext.__assign({}, state), {
+        return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, state), {
           currentChannel: currentChannel,
           initialized: true
         });
@@ -33,7 +33,7 @@ function reducer(state, action) {
 
     case CHANNEL_INVALID:
       {
-        return LocalizationContext.__assign(LocalizationContext.__assign({}, state), {
+        return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, state), {
           currentChannel: null,
           initialized: false
         });
@@ -46,27 +46,27 @@ function reducer(state, action) {
             createdQuery = _a.createdQuery;
 
         if (createdQuery && createdQuery.channelUrl === state.currentMessageSearchQuery.channelUrl && createdQuery.key === state.currentMessageSearchQuery.key) {
-          return LocalizationContext.__assign(LocalizationContext.__assign({}, state), {
+          return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, state), {
             loading: false,
             isInvalid: false,
-            allMessages: LocalizationContext.__spreadArray([], messages, true),
+            allMessages: SendbirdSdkContext.__spreadArray([], messages, true),
             hasMoreResult: state.currentMessageSearchQuery.hasNext
           });
         }
 
-        return LocalizationContext.__assign({}, state);
+        return SendbirdSdkContext.__assign({}, state);
       }
 
     case SET_QUERY_INVALID:
       {
-        return LocalizationContext.__assign(LocalizationContext.__assign({}, state), {
+        return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, state), {
           isInvalid: true
         });
       }
 
     case START_MESSAGE_SEARCH:
       {
-        return LocalizationContext.__assign(LocalizationContext.__assign({}, state), {
+        return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, state), {
           isInvalid: false,
           loading: false
         });
@@ -75,7 +75,7 @@ function reducer(state, action) {
     case START_GETTING_SEARCHED_MESSAGES:
       {
         var currentMessageSearchQuery = action.payload;
-        return LocalizationContext.__assign(LocalizationContext.__assign({}, state), {
+        return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, state), {
           loading: true,
           currentMessageSearchQuery: currentMessageSearchQuery
         });
@@ -84,15 +84,15 @@ function reducer(state, action) {
     case GET_NEXT_SEARCHED_MESSAGES:
       {
         var messages = action.payload;
-        return LocalizationContext.__assign(LocalizationContext.__assign({}, state), {
-          allMessages: LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], state.allMessages, true), messages, true),
+        return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, state), {
+          allMessages: SendbirdSdkContext.__spreadArray(SendbirdSdkContext.__spreadArray([], state.allMessages, true), messages, true),
           hasMoreResult: state.currentMessageSearchQuery.hasNext
         });
       }
 
     case RESET_SEARCH_STRING:
       {
-        return LocalizationContext.__assign(LocalizationContext.__assign({}, state), {
+        return SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, state), {
           allMessages: []
         });
       }
@@ -158,7 +158,7 @@ function useGetSearchedMessages(_a, _b) {
 
     if (sdk && channelUrl && sdk.createMessageSearchQuery && currentChannel) {
       if (requestString) {
-        var inputSearchMessageQueryObject = LocalizationContext.__assign(LocalizationContext.__assign({}, messageSearchQuery), {
+        var inputSearchMessageQueryObject = SendbirdSdkContext.__assign(SendbirdSdkContext.__assign({}, messageSearchQuery), {
           order: 'ts',
           channelUrl: channelUrl,
           messageTimestampFrom: currentChannel.invitedAt
@@ -272,12 +272,12 @@ function MessageSearchItem(_a) {
   var profileUrl = sender.profileUrl,
       nickname = sender.nickname;
 
-  var _b = React.useContext(LocalizationContext.LocalizationContext),
+  var _b = React.useContext(SendbirdSdkContext.LocalizationContext),
       stringSet = _b.stringSet,
       dateLocale = _b.dateLocale;
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], Array.isArray(className) ? className : [className], true), ['sendbird-message-search-item', selected ? 'sendbird-message-search-item--selected' : ''], false).join(' '),
+    className: SendbirdSdkContext.__spreadArray(SendbirdSdkContext.__spreadArray([], Array.isArray(className) ? className : [className], true), ['sendbird-message-search-item', selected ? 'sendbird-message-search-item--selected' : ''], false).join(' '),
     onClick: function (e) {
       e.stopPropagation();
       onClick(message);
@@ -368,12 +368,12 @@ function MessageSearchFileItem(props) {
   var profileUrl = sender.profileUrl,
       nickname = sender.nickname;
 
-  var _a = React.useContext(LocalizationContext.LocalizationContext),
+  var _a = React.useContext(SendbirdSdkContext.LocalizationContext),
       stringSet = _a.stringSet,
       dateLocale = _a.dateLocale;
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], Array.isArray(className) ? className : [className], true), ['sendbird-message-search-file-item', selected ? 'sendbird-message-search-file-item--selected' : ''], false).join(' '),
+    className: SendbirdSdkContext.__spreadArray(SendbirdSdkContext.__spreadArray([], Array.isArray(className) ? className : [className], true), ['sendbird-message-search-file-item', selected ? 'sendbird-message-search-file-item--selected' : ''], false).join(' '),
     onClick: function (e) {
       e.stopPropagation();
       onClick(message);
@@ -460,7 +460,7 @@ function MessageSearch(props) {
       onResultLoaded = props.onResultLoaded,
       onResultClick = props.onResultClick; // hook variables
 
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
 
   var _a = React.useState(0),
       retryCount = _a[0],
@@ -561,7 +561,7 @@ function MessageSearch(props) {
     return /*#__PURE__*/React__default["default"].createElement("div", {
       className: COMPONENT_CLASS_NAME
     }, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
-      type: index$2.PlaceHolderTypes$1.WRONG,
+      type: index$2.PlaceHolderTypes.WRONG,
       retryToConnect: handleRetryToConnect
     }));
   }
@@ -570,7 +570,7 @@ function MessageSearch(props) {
     return /*#__PURE__*/React__default["default"].createElement("div", {
       className: COMPONENT_CLASS_NAME
     }, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
-      type: index$2.PlaceHolderTypes$1.SEARCHING
+      type: index$2.PlaceHolderTypes.SEARCHING
     }));
   }
 
@@ -578,7 +578,7 @@ function MessageSearch(props) {
     return /*#__PURE__*/React__default["default"].createElement("div", {
       className: COMPONENT_CLASS_NAME
     }, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
-      type: index$2.PlaceHolderTypes$1.SEARCH_IN,
+      type: index$2.PlaceHolderTypes.SEARCH_IN,
       searchInString: getChannelName()
     }));
   }
@@ -619,11 +619,11 @@ function MessageSearch(props) {
       }
     });
   }) : /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
-    type: index$2.PlaceHolderTypes$1.NO_RESULTS
+    type: index$2.PlaceHolderTypes.NO_RESULTS
   }));
 }
 
-var MessageSearch$1 = LocalizationContext.withSendbirdContext(MessageSearch);
+var MessageSearch$1 = SendbirdSdkContext.withSendbirdContext(MessageSearch);
 
 module.exports = MessageSearch$1;
 //# sourceMappingURL=MessageSearch.js.map

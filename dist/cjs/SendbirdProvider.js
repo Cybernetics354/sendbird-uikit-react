@@ -1,11 +1,11 @@
 'use strict';
 
-var LocalizationContext = require('./LocalizationContext-20ab283e.js');
+var SendbirdSdkContext = require('./SendbirdSdkContext-89d804b3.js');
 var React = require('react');
 var PropTypes = require('prop-types');
 var Sb = require('sendbird');
-var actionTypes = require('./actionTypes-37846f1f.js');
-var index = require('./index-baa7cbb7.js');
+var actionTypes = require('./actionTypes-e40dc21b.js');
+var index = require('./index-9855395f.js');
 var cssVars = require('css-vars-ponyfill');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -151,7 +151,7 @@ var useTheme = function (overrides) {
   React.useLayoutEffect(function () {
     if (!isEmpty(overrides)) {
       cssVars__default["default"]({
-        variables: LocalizationContext.__assign({
+        variables: SendbirdSdkContext.__assign({
           '--sendbird-dark-primary-500': '#4d2aa6',
           '--sendbird-dark-primary-400': '#6440C4',
           '--sendbird-dark-primary-300': '#7B53EF',
@@ -244,13 +244,13 @@ var sdkInitialState = {
 function reducer$1(state, action) {
   switch (action.type) {
     case SET_SDK_LOADING:
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
         initialized: false,
         loading: action.payload
       });
 
     case SDK_ERROR:
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
         initialized: false,
         loading: false,
         error: true
@@ -291,7 +291,7 @@ function reducer(state, action) {
       return userInitialState;
 
     case actionTypes.UPDATE_USER_INFO:
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
         user: action.payload
       });
 
@@ -303,7 +303,7 @@ function reducer(state, action) {
 function useConnectionStatus(sdk, logger) {
   const [isOnline, setIsOnline] = React.useState(true);
   React.useEffect(() => {
-    const uniqueHandlerId = LocalizationContext.uuidv4();
+    const uniqueHandlerId = SendbirdSdkContext.uuidv4();
     logger.warning('sdk changed', uniqueHandlerId);
     let handler;
 
@@ -431,7 +431,7 @@ const LoggerFactory = (lvl, customInterface) => {
 
   const logger = lvlArray.reduce((accumulator, currentLvl) => {
     if (currentLvl === LOG_LEVELS.DEBUG || currentLvl === LOG_LEVELS.ALL) {
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, accumulator), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, accumulator), {}, {
         info: applyLog(LOG_LEVELS.INFO),
         error: applyLog(LOG_LEVELS.ERROR),
         warning: applyLog(LOG_LEVELS.WARNING)
@@ -439,24 +439,24 @@ const LoggerFactory = (lvl, customInterface) => {
     }
 
     if (currentLvl === LOG_LEVELS.INFO) {
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, accumulator), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, accumulator), {}, {
         info: applyLog(LOG_LEVELS.INFO)
       });
     }
 
     if (currentLvl === LOG_LEVELS.ERROR) {
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, accumulator), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, accumulator), {}, {
         error: applyLog(LOG_LEVELS.ERROR)
       });
     }
 
     if (currentLvl === LOG_LEVELS.WARNING) {
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, accumulator), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, accumulator), {}, {
         warning: applyLog(LOG_LEVELS.WARNING)
       });
     }
 
-    return LocalizationContext._objectSpread2({}, accumulator);
+    return SendbirdSdkContext._objectSpread2({}, accumulator);
   }, getDefaultLogger());
   return logger;
 };
@@ -605,12 +605,12 @@ function Sendbird(props) {
   const isOnline = useConnectionStatus(sdkStore.sdk, logger);
   const localeStringSet = React__default["default"].useMemo(() => {
     if (!stringSet) {
-      return LocalizationContext.getStringSet('en');
+      return SendbirdSdkContext.getStringSet('en');
     }
 
-    return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, LocalizationContext.getStringSet('en')), stringSet);
+    return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, SendbirdSdkContext.getStringSet('en')), stringSet);
   }, [stringSet]);
-  return /*#__PURE__*/React__default["default"].createElement(LocalizationContext.SendbirdSdkContext.Provider, {
+  return /*#__PURE__*/React__default["default"].createElement(SendbirdSdkContext.SendbirdSdkContext.Provider, {
     value: {
       stores: {
         sdkStore,
@@ -652,7 +652,7 @@ function Sendbird(props) {
         useReaction
       }
     }
-  }, /*#__PURE__*/React__default["default"].createElement(LocalizationContext.LocalizationProvider, {
+  }, /*#__PURE__*/React__default["default"].createElement(SendbirdSdkContext.LocalizationProvider, {
     stringSet: localeStringSet,
     dateLocale: dateLocale
   }, children));

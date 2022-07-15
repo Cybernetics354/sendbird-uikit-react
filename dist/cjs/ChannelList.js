@@ -2,18 +2,18 @@
 
 var React = require('react');
 var PropTypes = require('prop-types');
-var LocalizationContext = require('./LocalizationContext-20ab283e.js');
-var actionTypes = require('./actionTypes-37846f1f.js');
-var index$5 = require('./index-59fdb6c9.js');
-var index = require('./index-baa7cbb7.js');
-var index$4 = require('./index-41d3eace.js');
-var LeaveChannel = require('./LeaveChannel-45df2be6.js');
-var index$3 = require('./index-1e853591.js');
-var index$1 = require('./index-baa068bd.js');
-var index$2 = require('./index-2e80bec5.js');
-var index$6 = require('./index-9388b083.js');
+var SendbirdSdkContext = require('./SendbirdSdkContext-89d804b3.js');
+var actionTypes = require('./actionTypes-e40dc21b.js');
+var index$5 = require('./index-54590273.js');
+var index = require('./index-9855395f.js');
+var index$4 = require('./index-711fa7d0.js');
+var LeaveChannel = require('./LeaveChannel-b7e05b82.js');
+var index$3 = require('./index-de107146.js');
+var index$1 = require('./index-35e33281.js');
+var index$2 = require('./index-57f8fd3e.js');
+var index$6 = require('./index-3fd14343.js');
 require('react-dom');
-require('./utils-14e004c6.js');
+require('./utils-ed11a663.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -61,7 +61,7 @@ var channelListInitialState = {
 function reducer(state, action) {
   switch (action.type) {
     case INIT_CHANNELS_START:
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
         loading: true
       });
 
@@ -71,7 +71,7 @@ function reducer(state, action) {
     case INIT_CHANNELS_SUCCESS:
       {
         const nextChannel = action.payload && action.payload.length && action.payload.length > 0 ? action.payload[0].url : null;
-        return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+        return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
           initialized: true,
           loading: false,
           allChannels: action.payload,
@@ -88,7 +88,7 @@ function reducer(state, action) {
           } = _ref;
           return !currentChannels.find(c => c === url);
         });
-        return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+        return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
           allChannels: [...state.allChannels, ...filteredChannels]
         });
       }
@@ -99,17 +99,17 @@ function reducer(state, action) {
 
         if (state.channelListQuery) {
           if (index.filterChannelListParams(state.channelListQuery, channel, state.currentUserId)) {
-            return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+            return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
               allChannels: index.getChannelsWithUpsertedChannel(state.allChannels, channel)
             });
           }
 
-          return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+          return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
             currentChannel: channel.url
           });
         }
 
-        return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+        return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
           currentChannel: channel.url,
           allChannels: [channel, ...state.allChannels.filter(ch => ch.url !== channel.url)]
         });
@@ -121,14 +121,14 @@ function reducer(state, action) {
 
         if (state.channelListQuery) {
           if (index.filterChannelListParams(state.channelListQuery, channel, state.currentUserId)) {
-            return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+            return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
               allChannels: index.getChannelsWithUpsertedChannel(state.allChannels, channel)
             });
           }
         }
 
         const nextChannel = channel.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === channel.url ? 1 : 0].url : state.currentChannel;
-        return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+        return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
           currentChannel: state.disableAutoSelect ? null : nextChannel,
           allChannels: state.allChannels.filter(_ref2 => {
             let {
@@ -144,7 +144,7 @@ function reducer(state, action) {
       {
         const channelUrl = action.payload;
         const nextChannel = channelUrl === state.currentChannel ? state.allChannels[0].url : state.currentChannel;
-        return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+        return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
           currentChannel: state.disableAutoSelect ? null : nextChannel,
           allChannels: state.allChannels.filter(_ref3 => {
             let {
@@ -166,14 +166,14 @@ function reducer(state, action) {
           if (index.filterChannelListParams(state.channelListQuery, channel, state.currentUserId)) {
             const filteredChannels = index.getChannelsWithUpsertedChannel(state.allChannels, channel);
             const nextChannel = isMe && channel.url === state.currentChannel ? filteredChannels[0].url : state.currentChannel;
-            return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+            return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
               currentChannel: state.disableAutoSelect ? null : nextChannel,
               allChannels: filteredChannels
             });
           }
 
           const nextChannel = channel.url === state.currentChannel ? state.allChannels[0].url : state.currentChannel;
-          return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+          return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
             currentChannel: state.disableAutoSelect ? null : nextChannel,
             allChannels: state.allChannels.filter(_ref4 => {
               let {
@@ -186,7 +186,7 @@ function reducer(state, action) {
 
         const filteredChannels = state.allChannels.filter(c => !(c.url === channel.url && isMe));
         const nextChannel = isMe && channel.url === state.currentChannel ? filteredChannels[0].url : state.currentChannel;
-        return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+        return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
           currentChannel: state.disableAutoSelect ? null : nextChannel,
           allChannels: filteredChannels
         });
@@ -208,14 +208,14 @@ function reducer(state, action) {
 
         if (state.channelListQuery) {
           if (index.filterChannelListParams(state.channelListQuery, channel, state.currentUserId)) {
-            return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+            return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
               allChannels: index.getChannelsWithUpsertedChannel(allChannels, channel)
             });
           }
 
           const nextChannel = channel.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === channel.url ? 1 : 0].url // if coming channel is first of channel list, current channel will be the next one
           : state.currentChannel;
-          return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+          return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
             currentChannel: state.disableAutoSelect ? null : nextChannel,
             allChannels: state.allChannels.filter(_ref5 => {
               let {
@@ -237,13 +237,13 @@ function reducer(state, action) {
           const currentUnreadCount = currentChannel && currentChannel.unreadMessageCount;
 
           if (currentUnreadCount === 0) {
-            return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+            return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
               allChannels: state.allChannels.map(ch => ch.url === channel.url ? channel : ch)
             });
           }
         }
 
-        return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+        return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
           allChannels: [channel, ...state.allChannels.filter(_ref7 => {
             let {
               url
@@ -254,22 +254,22 @@ function reducer(state, action) {
       }
 
     case SET_CURRENT_CHANNEL:
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
         currentChannel: action.payload
       });
 
     case SHOW_CHANNEL_SETTINGS:
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
         showSettings: true
       });
 
     case HIDE_CHANNEL_SETTINGS:
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
         showSettings: false
       });
 
     case ON_LAST_MESSAGE_UPDATED:
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
         allChannels: state.allChannels.map(channel => channel.url === action.payload.url ? action.payload : channel)
       });
 
@@ -279,14 +279,14 @@ function reducer(state, action) {
 
         if (state.channelListQuery) {
           if (index.filterChannelListParams(state.channelListQuery, channel, state.currentUserId)) {
-            return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+            return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
               allChannels: index.getChannelsWithUpsertedChannel(state.allChannels, channel)
             });
           }
 
           const nextChannel = channel.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === channel.url ? 1 : 0].url // if coming channel is first of channel list, current channel will be the next one
           : state.currentChannel;
-          return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+          return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
             currentChannel: state.disableAutoSelect ? null : nextChannel,
             allChannels: state.allChannels.filter(_ref8 => {
               let {
@@ -297,7 +297,7 @@ function reducer(state, action) {
           });
         }
 
-        return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+        return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
           allChannels: state.allChannels.map(ch => {
             if (ch.url === channel.url) {
               // eslint-disable-next-line no-param-reassign
@@ -316,14 +316,14 @@ function reducer(state, action) {
 
         if (state.channelListQuery) {
           if (index.filterChannelListParams(state.channelListQuery, channel, state.currentUserId)) {
-            return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+            return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
               allChannels: index.getChannelsWithUpsertedChannel(state.allChannels, channel)
             });
           }
 
           const nextChannel = channel.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === channel.url ? 1 : 0].url // if coming channel is first of channel list, current channel will be the next one
           : state.currentChannel;
-          return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+          return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
             currentChannel: state.disableAutoSelect ? null : nextChannel,
             allChannels: state.allChannels.filter(_ref9 => {
               let {
@@ -334,7 +334,7 @@ function reducer(state, action) {
           });
         }
 
-        return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+        return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
           allChannels: state.allChannels.map(ch => {
             if (ch.url === channel.url) {
               // eslint-disable-next-line no-param-reassign
@@ -349,19 +349,19 @@ function reducer(state, action) {
 
     case CHANNEL_REPLACED_TO_TOP:
       {
-        return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+        return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
           allChannels: [action.payload, ...state.allChannels.filter(channel => channel.url !== action.payload.url)]
         });
       }
 
     case CHANNEL_LIST_PARAMS_UPDATED:
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
         currentUserId: action.payload.currentUserId,
         channelListQuery: action.payload.channelListQuery
       });
 
     case SET_AUTO_SELECT_CHANNEL_ITEM:
-      return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
+      return SendbirdSdkContext._objectSpread2(SendbirdSdkContext._objectSpread2({}, state), {}, {
         disableAutoSelect: action.payload
       });
 
@@ -461,7 +461,7 @@ function ChannelPreview(_ref) {
   const {
     stringSet,
     dateLocale
-  } = React.useContext(LocalizationContext.LocalizationContext);
+  } = React.useContext(SendbirdSdkContext.LocalizationContext);
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: ['sendbird-channel-preview', isActive ? 'sendbird-channel-preview--active' : ''].join(' '),
     role: "link",
@@ -557,7 +557,7 @@ function ChannelHeader(_ref) {
   } = _ref;
   const {
     stringSet
-  } = React.useContext(LocalizationContext.LocalizationContext);
+  } = React.useContext(SendbirdSdkContext.LocalizationContext);
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: ['sendbird-channel-header', allowProfileEdit ? 'sendbird-channel-header--allow-edit' : ''].join(' ')
   }, renderHeader ? renderHeader() : /*#__PURE__*/React__default["default"].createElement("div", {
@@ -618,7 +618,7 @@ function EditUserProfile(_a) {
   var hiddenInputRef = React.useRef(null);
   var inputRef = React.useRef(null);
   var formRef = React.useRef(null);
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
 
   var _e = React.useState(null),
       currentImg = _e[0],
@@ -731,7 +731,7 @@ var mapStoreToProps = function (store) {
   };
 };
 
-var ConnectedEditUserProfile = LocalizationContext.withSendbirdContext(EditUserProfile, mapStoreToProps);
+var ConnectedEditUserProfile = SendbirdSdkContext.withSendbirdContext(EditUserProfile, mapStoreToProps);
 
 function AddChannel(_ref) {
   let {
@@ -748,7 +748,7 @@ function AddChannel(_ref) {
   const [type, setType] = React.useState('group');
   const {
     stringSet
-  } = React.useContext(LocalizationContext.LocalizationContext);
+  } = React.useContext(SendbirdSdkContext.LocalizationContext);
 
   if (!sdk || !sdk.createApplicationUserListQuery) {
     return null;
@@ -890,7 +890,7 @@ function ChannelPreviewAction(_ref) {
   const [showModal, setShowModal] = React.useState(false);
   const {
     stringSet
-  } = React.useContext(LocalizationContext.LocalizationContext);
+  } = React.useContext(SendbirdSdkContext.LocalizationContext);
   return /*#__PURE__*/React__default["default"].createElement("div", {
     role: "button",
     style: {
@@ -1356,7 +1356,7 @@ function ChannelList(props) {
     };
   }, [sdkIntialized]);
   React.useEffect(() => {
-    setSdkChannelHandlerId(LocalizationContext.uuidv4);
+    setSdkChannelHandlerId(SendbirdSdkContext.uuidv4);
 
     if (sdkIntialized) {
       logger.info('ChannelList: Setup channelHandlers');
@@ -1529,7 +1529,7 @@ function ChannelList(props) {
       }
     }
   }, sdkError && /*#__PURE__*/React__default["default"].createElement(ChannelsPlaceholder, {
-    type: index$3.PlaceHolderTypes.WRONG
+    type: index$3.PlaceHolderTypes$1.WRONG
   }), /*#__PURE__*/React__default["default"].createElement("div", null, sortedChannels && sortedChannels.map((channel, idx) => {
     const onLeaveChannel = (c, cb) => {
       logger.info('ChannelList: Leaving channel', c);
@@ -1589,10 +1589,10 @@ function ChannelList(props) {
       })
     });
   })), (!sdkIntialized || loading) && /*#__PURE__*/React__default["default"].createElement(ChannelsPlaceholder, {
-    type: index$3.PlaceHolderTypes.LOADING
+    type: index$3.PlaceHolderTypes$1.LOADING
   }), //  placeholder
   (!allChannels || allChannels.length === 0) && /*#__PURE__*/React__default["default"].createElement(ChannelsPlaceholder, {
-    type: index$3.PlaceHolderTypes.NO_CHANNELS
+    type: index$3.PlaceHolderTypes$1.NO_CHANNELS
   })));
 }
 
@@ -1676,7 +1676,7 @@ ChannelList.defaultProps = {
   onChannelSelect: noop,
   disableAutoSelect: false
 };
-var ChannelList$1 = LocalizationContext.withSendbirdContext(ChannelList);
+var ChannelList$1 = SendbirdSdkContext.withSendbirdContext(ChannelList);
 
 module.exports = ChannelList$1;
 //# sourceMappingURL=ChannelList.js.map

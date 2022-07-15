@@ -1,13 +1,13 @@
 'use strict';
 
 var React = require('react');
-var index$1 = require('./index-59fdb6c9.js');
-var LocalizationContext = require('./LocalizationContext-20ab283e.js');
-var index$4 = require('./index-baa7cbb7.js');
-var index = require('./index-1e853591.js');
-var utils = require('./utils-14e004c6.js');
-var index$2 = require('./index-9388b083.js');
-var index$3 = require('./index-0d39ad76.js');
+var index$1 = require('./index-54590273.js');
+var SendbirdSdkContext = require('./SendbirdSdkContext-89d804b3.js');
+var index$4 = require('./index-9855395f.js');
+var index = require('./index-de107146.js');
+var utils = require('./utils-ed11a663.js');
+var index$2 = require('./index-3fd14343.js');
+var index$3 = require('./index-8cfeb0c0.js');
 require('prop-types');
 require('react-dom');
 
@@ -22,7 +22,7 @@ function ChannelAvatar(_a) {
       height = _b === void 0 ? 56 : _b,
       _c = _a.width,
       width = _c === void 0 ? 56 : _c;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
   var memoizedAvatar = React.useMemo(function () {
     return /*#__PURE__*/React__default["default"].createElement(index.Avatar, {
       className: "sendbird-chat-header__avatar--open-channel",
@@ -52,7 +52,7 @@ var EditDetails = function (props) {
       newFile = _b[0],
       setNewFile = _b[1];
 
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
   var title = channel.name;
   return /*#__PURE__*/React__default["default"].createElement(index$1.Modal, {
     titleText: stringSet.MODAL__CHANNEL_INFORMATION__TITLE,
@@ -134,7 +134,7 @@ function ChannelProfile(props) {
       showModal = _a[0],
       setShowModal = _a[1];
 
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: "sendbird-openchannel-profile"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
@@ -177,7 +177,7 @@ function ChannelProfile(props) {
 function ParticipantsModal(_a) {
   var hideModal = _a.hideModal,
       channel = _a.channel;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
 
   var _b = React.useState([]),
       participants = _b[0],
@@ -222,7 +222,7 @@ function ParticipantsModal(_a) {
             return;
           }
 
-          setParticipants(LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], participants, true), fetchedParticipants, true));
+          setParticipants(SendbirdSdkContext.__spreadArray(SendbirdSdkContext.__spreadArray([], participants, true), fetchedParticipants, true));
         });
       }
     }
@@ -245,7 +245,7 @@ var UserListItem = function (_a) {
       disableUserProfile = _c.disableUserProfile,
       renderUserProfile = _c.renderUserProfile;
 
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: "sendbird-participants-accordion__member"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
@@ -304,7 +304,7 @@ function ParticipantsAccordion(_a) {
       showMoreModal = _c[0],
       setShowMoreModal = _c[1];
 
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
   React.useEffect(function () {
     if (!channel || !channel.createParticipantListQuery) {
       return;
@@ -377,7 +377,7 @@ function DeleteChannel(_a) {
       showDeleteChannelModal = _b[0],
       setShowDeleteChannelModal = _b[1];
 
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
   return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("div", {
     className: "sendbird-openchannel-settings__panel-item\n          sendbird-openchannel-settings__delete-channel\n            ".concat(!isOnline ? 'sendbird-openchannel-settings__panel-item__disabled' : ''),
     role: "button",
@@ -420,7 +420,7 @@ function ParticipantsList(_a) {
   var channel = _a.channel,
       onCloseClick = _a.onCloseClick,
       currentUser = _a.currentUser;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
 
   var _b = React.useState([]),
       participants = _b[0],
@@ -473,7 +473,7 @@ function ParticipantsList(_a) {
             return;
           }
 
-          setParticipants(LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], participants, true), fetchedParticipants, true));
+          setParticipants(SendbirdSdkContext.__spreadArray(SendbirdSdkContext.__spreadArray([], participants, true), fetchedParticipants, true));
         });
       }
     }
@@ -492,7 +492,7 @@ function ParticipantsList(_a) {
 
 function InvalidChannel(_a) {
   var onCloseClick = _a.onCloseClick;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: "sendbird-openchannel-settings"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
@@ -511,7 +511,7 @@ function InvalidChannel(_a) {
   })), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "sendbird-openchannel-settings__placeholder"
   }, /*#__PURE__*/React__default["default"].createElement(index.PlaceHolder, {
-    type: index.PlaceHolderTypes.WRONG
+    type: index.PlaceHolderTypes$1.WRONG
   })));
 }
 
@@ -547,7 +547,7 @@ function OpenChannelSettings(props) {
       channel = _e[0],
       setChannel = _e[1];
 
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React.useContext(SendbirdSdkContext.LocalizationContext).stringSet;
   React.useEffect(function () {
     if (!channelUrl || !sdk || !sdk.getConnectionState) {
       setChannel(null);
@@ -668,7 +668,7 @@ function OpenChannelSettings(props) {
   }));
 }
 
-var ChannelSettingsWithSendbird = LocalizationContext.withSendbirdContext(OpenChannelSettings, function (store) {
+var ChannelSettingsWithSendbird = SendbirdSdkContext.withSendbirdContext(OpenChannelSettings, function (store) {
   var logger = store && store.config && store.config.logger;
   var theme = store && store.config && store.config.theme || 'light';
   var isOnline = store && store.config && store.config.isOnline;

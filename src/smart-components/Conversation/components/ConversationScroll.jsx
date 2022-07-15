@@ -190,7 +190,7 @@ export default class ConversationScroll extends Component {
                   menuDisabled: disabled,
                 });
 
-                if (rendered) {
+                if (rendered !== undefined && rendered !== null) {
                   return (
                     <div
                       key={m.messageId || m.reqId}

@@ -190,6 +190,8 @@ export default class ConversationScroll extends Component {
                   menuDisabled: disabled,
                 });
 
+                console.log(rendered);
+
                 if (rendered !== undefined && rendered !== null) {
                   return (
                     <div
